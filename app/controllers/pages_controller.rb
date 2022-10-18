@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def mint
   end
+
+  def create
+  end
 end
