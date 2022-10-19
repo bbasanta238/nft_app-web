@@ -74,5 +74,8 @@ group :test do
   gem "webdrivers"
 end
 
-
+# simple form gem
 gem 'simple_form'
+
+# gon gem
+gem 'gon'
