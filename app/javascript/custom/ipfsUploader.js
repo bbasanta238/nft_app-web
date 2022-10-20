@@ -1,4 +1,5 @@
 import { Web3Storage } from "web3.storage";
+import { mintNFT } from "../web3/NFTMint";
 let client;
 
 function getAccessToken() {
@@ -26,6 +27,7 @@ async function uploadMetaData(nftJSON, inputValues) {
   console.log("blob files", files);
   const metaDataCID = await client.put(files);
   let metaDataURI = `https://${metaDataCID}.ipfs.dweb.link/${inputValues.name}.json`;
+  await mintNFT(metaDataURI);
   console.log("metadata URI", metaDataURI);
 }
 
