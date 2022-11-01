@@ -79,3 +79,7 @@ gem 'simple_form'
 
 # gon gem
 gem 'gon'
+
+# res-client to fetch third-pary api
+gem "rest-client"
+

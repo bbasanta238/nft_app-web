@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topkenId: 1
+  tokenURI: MyString
+
+two:
+  topkenId: 1
+  tokenURI: MyString
