@@ -1,12 +1,22 @@
 class PagesController < ApplicationController
+
   def home
-    # @tokens = Token.all
-    # FetchAllTokensJob.perform_now("0xFD54be2257D293dfAb54C7d09510fdFf9c09f15D")
+    @tokens = Token.all
   end
 
   def mint
   end
 
   def create
+    redirect_to '/ipfs-upload'
+  end
+
+  def ipfsUpload
+  end
+
+  def latestMint
+    @tokens = Token.all
+    FetchLatestMintJob.perform_now("#{gon.contractAddress}",@tokens.length)
+    redirect_to '/'
   end
 end

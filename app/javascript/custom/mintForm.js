@@ -2,7 +2,7 @@ import { uploadImage } from "./ipfsUploader";
 
 $(document).on("turbo:load", async () => {
   let file = document.querySelector('input[type="file"]');
-  //   const reader = new FileReader();
+
   $("#formId").on("submit", async () => {
     var values = {};
     $("#formId *")

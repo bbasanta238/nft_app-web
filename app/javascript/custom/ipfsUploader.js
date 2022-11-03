@@ -27,7 +27,11 @@ async function uploadMetaData(nftJSON, inputValues) {
   console.log("blob files", files);
   const metaDataCID = await client.put(files);
   let metaDataURI = `https://${metaDataCID}.ipfs.dweb.link/${inputValues.name}.json`;
-  await mintNFT(metaDataURI);
+  const transferEvent = await mintNFT(metaDataURI);
+  if (transferEvent) {
+    window.location.assign("/latest-mint");
+  }
+  // console.log(transferEvent);
   console.log("metadata URI", metaDataURI);
 }
 
