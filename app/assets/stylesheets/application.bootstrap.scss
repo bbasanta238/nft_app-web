@@ -1,2 +1,13 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+$utilities: map-merge(
+  $utilities, (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+@import "bootstrap/scss/utilities/api";

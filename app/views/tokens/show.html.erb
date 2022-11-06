@@ -1,0 +1,34 @@
+<div class="container d-flex mt-sm-5 justify-content-center py-5 flex-column flex-sm-row w-sm-75 mx-auto" >
+  <div class="card w-75 w-sm-25 text-center align-self-center">
+    <img src="<%= @token.image_uri %>" class="card-img-top img-fluid" alt="..." >
+    <div class="card-body border border-top">
+      <h5 class="card-title">Token#<%=@token.token_id%></h5>
+    </div>
+  </div>
+  <div class="border border-primary my-3 mx-sm-5 my-sm-0 d-none d-sm-block">
+  </div>
+  <div id="listingForm" class="align-self-center mt-3 mt-sm-0 align-self-sm-start w-sm-50 w-75">
+    <h5 class="card-title pb-3">Name : <%=@token.name%></h5>
+    <section class="pb-1">
+      <h5 class="card-title">Description : </h5>
+      <p class="lead">
+        <%=@token.description%>
+      </p>
+      <% if(@sell)%>
+        <h5 class="card-title">Listed Price : </h5>
+        <p class="lead">
+          <%=@listed.list_price%> ETH
+        </p>
+      <%end%>
+    </section>
+    <div class="w-100 w-sm-75">
+      <% if(@sell)%>
+        <%=@token.id%>
+        <%=@listed.id%>
+        <%= link_to 'Cancel Sell', token_sale_path(@token,@listed),method: :delete,data:{turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class: 'btn btn-secondary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
+      <%else%>
+        <%=link_to 'Listing', new_token_sale_path(@token) , class: 'btn btn-danger mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold'%>
+      <%end%>
+    </div>
+  </div>
+</div>

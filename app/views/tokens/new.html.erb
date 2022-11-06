@@ -1,6 +1,6 @@
 <div id="NFTMintingForm">
   <div class="col-md-6 offset-md-3 mt-5">
-    <%= simple_form_for :form , :url=> pages_path, method: :POST, id: 'formId' do |f|%>
+    <%= simple_form_for :form , :url=> tokens_path, method: :POST, id: 'formId' do |f|%>
       <%= f.input :name, :as=>:string, :label=>"NFT Name", input_html: { id: 'name' } %>
       <br>
       <%= f.input :Imgae, :as=>:file, :label=>"NFT Image", input_html: {id: "image"}%>

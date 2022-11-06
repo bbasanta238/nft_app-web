@@ -22,11 +22,11 @@ def latestTokens():
     tokensSupply = NFTContract.functions.totalSupply().call()
     latestTokenCount = tokensSupply-int(totalRow)
     tokenList = []
-    print(latestTokenCount)
     if latestTokenCount>0 :
         for i in range(int(totalRow)+1,tokensSupply+1) :
             tokenURI = NFTContract.functions.tokenURI(i).call()
-            soleTokenTuple = (i,tokenURI)
+            owner = NFTContract.functions.ownerOf(i).call()
+            soleTokenTuple = (i,tokenURI,owner)
             tokenList.append(soleTokenTuple)
     print ((json.dumps(tokenList)))
 

@@ -150,6 +150,11 @@
               "internalType": "string",
               "name": "tokenURI",
               "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "currentOwner",
+              "type": "address"
             }
           ],
           "internalType": "struct NFTDataStruct.tokenInfo[]",

@@ -21,6 +21,7 @@ class FetchAllTokensJob < ApplicationJob
     tokenIPFSData = JSON.parse(RestClient::Request.execute(method: :get, url: tokenURI, timeout: 10))
     singleNFT[:tokenID] = individualNFTArray[0]
     singleNFT[:tokenURI] = individualNFTArray[1]
+    singleNFT[:owner] = individualNFTArray[2]
     singleNFT[:name] = tokenIPFSData["name"]
     singleNFT[:description] = tokenIPFSData["description"]
     singleNFT[:imageURI] = tokenIPFSData["image"]
@@ -29,9 +30,9 @@ class FetchAllTokensJob < ApplicationJob
 
   def updateModel()
     for i in 0...@nfts.length do
-      token = Token.where(token_ID: @nfts[i][:tokenID]).where(token_URI: @nfts[i][:tokenURI])
+      token = Token.where(token_id: @nfts[i][:tokenID]).where(token_uri: @nfts[i][:tokenURI])
       if(token.empty?)
-        Token.create(token_ID: @nfts[i][:tokenID], token_URI: @nfts[i][:tokenURI], name: @nfts[i][:name], description: @nfts[i][:description], image_URI: @nfts[i][:imageURI])
+        Token.create(token_id: @nfts[i][:tokenID], token_uri: @nfts[i][:tokenURI], name: @nfts[i][:name], description: @nfts[i][:description], image_uri: @nfts[i][:imageURI],owner: @nfts[i][:owner])
       end
     end
   end

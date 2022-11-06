@@ -1,0 +1,14 @@
+<div class="mx-3" style="margin-top:6rem">
+  <h1 class="text-center font-monospace fw-semibold">Sell Item</h1>
+  <div class="shadow-lg p-3 mb-5 bg-body rounded w-sm-50 mx-auto mt-4 mt-sm-5">
+    <div class="container d-flex mt-sm-4 justify-content-center py-5 flex-column flex-sm-row w-sm-75 mx-auto" >
+      <div class="w-100 w-sm-75">
+        <%= simple_form_for :form, url: token_sale_index_path(@token.token_id),method: :post, id: 'sellForm' do |f| %>
+          <%# <%= f.input :token_id, :label => 'Price', placeholder: '0.0 Eth' %>
+          <%= f.input :list_price, :label => 'Price', placeholder: '0.0 ETH' %>
+          <%=f.submit 'List This Item' , class: 'btn btn-danger mt-3 mt-sm-4 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
