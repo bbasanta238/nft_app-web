@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root "pages#index"
 
   resources :pages
+  resources :items, only: :index
+
   resources :tokens do
     resources :sale, except: :index
   end

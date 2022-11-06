@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @tokens = Token.all
+    @tokens = Token.where.not(owner: params[:account])
   end
-  
+
 end
