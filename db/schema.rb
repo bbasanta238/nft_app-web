@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_06_052923) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_07_101940) do
   create_table "list_tokens", force: :cascade do |t|
     t.integer "token_id"
     t.float "list_price"
     t.boolean "is_listed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "approval_signature"
   end
 
   create_table "tokens", force: :cascade do |t|

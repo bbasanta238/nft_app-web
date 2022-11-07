@@ -23,8 +23,6 @@
     </section>
     <div class="w-100 w-sm-75">
       <% if(@sell)%>
-        <%=@token.id%>
-        <%=@listed.id%>
         <%= link_to 'Cancel Sell', token_sale_path(@token,@listed),method: :delete,data:{turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class: 'btn btn-secondary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
       <%else%>
         <%=link_to 'Listing', new_token_sale_path(@token) , class: 'btn btn-danger mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold'%>
