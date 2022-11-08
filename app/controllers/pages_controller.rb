@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
 
   def index
-    @tokens = Token.where.not(owner: params[:account])
+    if(user_signed_in?)
+      @tokens = Token.where.not(owner: current_user.wallet_address)
+    else
+      @tokens = Token.all
+    end
+
   end
 
 end

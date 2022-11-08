@@ -1,7 +1,13 @@
 class SaleController < ApplicationController
+    before_action :is_signed_in?
+
+    def is_signed_in?
+        if !user_signed_in?
+            redirect_to new_user_registration_path	
+        end
+    end
 
     def create
-        debugger
         if((Token.find(params[:token_id]).list_token).nil?)
             ListToken.create(token_id: params[:token_id], list_price: params[:form][:list_price], is_listed: true)
             redirect_to token_path(params[:token_id])

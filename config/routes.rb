@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+
   get 'ipfs-upload', to: 'tokens#ipfsUpload'
   get 'latest-mint', to: 'tokens#latestMint'
   # get 'pages/mint'

@@ -22,7 +22,7 @@ class FetchLatestMintJob < ApplicationJob
     tokenIPFSData = JSON.parse(RestClient::Request.execute(method: :get, url: tokenURI, timeout: 20))
     singleNFT[:tokenID] = individualNFTArray[0]
     singleNFT[:tokenURI] = individualNFTArray[1]
-    singleNFT[:owner] = individualNFTArray[2]
+    singleNFT[:owner] = individualNFTArray[2].downcase
     singleNFT[:name] = tokenIPFSData["name"]
     singleNFT[:description] = tokenIPFSData["description"]
     singleNFT[:imageURI] = tokenIPFSData["image"]

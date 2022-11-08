@@ -1,4 +1,11 @@
 class TokensController < ApplicationController
+    before_action :is_signed_in?
+
+    def is_signed_in?
+        if !user_signed_in?
+            redirect_to new_user_registration_path	
+        end
+    end
 
     def create
         redirect_to ipfs_upload_path

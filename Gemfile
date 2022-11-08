@@ -83,3 +83,5 @@ gem 'gon'
 # res-client to fetch third-pary api
 gem "rest-client"
 
+# gem devise
+gem 'devise'

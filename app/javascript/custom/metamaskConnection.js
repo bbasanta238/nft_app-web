@@ -3,28 +3,41 @@ import Web3 from "web3";
 let web3;
 let accounts;
 
-$(async function () {
-  async function checkProvider() {
+const checkProvider = async () => {
+  if (localStorage.getItem("signature") == "true") {
+    console.log("with signature");
     if (typeof window.ethereum !== "undefined") {
       web3 = new Web3(await Web3.givenProvider);
       accounts = await ethereum.request({ method: "eth_requestAccounts" });
-      message = `Your want to Login in this website via account ${accounts[0]}`;
-
-      if (await checkSignature(message)) {
-        login();
-      }
+      login();
+      // message = `Your want to Login in this website via account ${accounts[0]}`;
     } else {
-      alert("Please install metamask");
+      alert("Please intall metamask");
     }
   }
-  checkProvider();
-  window.ethereum.on("accountsChanged", () => {
-    checkProvider();
-  });
+};
+
+const newSigning = async () => {
+  if (typeof window.ethereum !== "undefined") {
+    web3 = new Web3(await Web3.givenProvider);
+    accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    message = `Your want to Login in this website via account ${accounts[0]}`;
+    if (await web3.eth.personal.sign(message, accounts[0])) {
+      localStorage.setItem("signature", "true");
+      return true;
+    }
+  } else {
+    alert("Please intall metamask");
+  }
+};
+
+window.ethereum.on("accountsChanged", () => {
+  localStorage.removeItem("signature");
 });
 
-$(document).on("turbo:load", function () {
-  login();
+$(document).on("turbo:load", async function () {
+  console.log("turbo-load-this");
+  checkProvider();
 });
 
 // function to change the login and logout
@@ -32,20 +45,7 @@ const login = () => {
   if (typeof accounts != "undefined" && accounts.length) {
     console.log("account is : ", accounts[0]);
     $("#loginId").html(accounts[0]);
-    $("#logoutId").removeClass("d-none");
   }
 };
 
-// function to check signature
-const checkSignature = async (message) => {
-  // console.log("localstorage from",window.localStorage.getItem('signature'))
-  if (localStorage.getItem("signature") == "true") {
-    return true;
-  } else {
-    await web3.eth.personal.sign(message, accounts[0]);
-    localStorage.setItem("signature", "true");
-    return true;
-  }
-};
-
-export { web3, accounts };
+export { web3, accounts, checkProvider, newSigning };
