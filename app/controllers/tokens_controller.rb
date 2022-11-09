@@ -22,6 +22,11 @@ class TokensController < ApplicationController
         elsif
             @sell = true
         end
+        if(@token.owner == current_user.wallet_address)
+            @owner = true
+        elsif
+            @owner = false
+        end
     end
 
     def ipfsUpload

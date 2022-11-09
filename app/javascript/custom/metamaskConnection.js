@@ -5,7 +5,6 @@ let accounts;
 
 const checkProvider = async () => {
   if (localStorage.getItem("signature") == "true") {
-    console.log("with signature");
     if (typeof window.ethereum !== "undefined") {
       web3 = new Web3(await Web3.givenProvider);
       accounts = await ethereum.request({ method: "eth_requestAccounts" });
@@ -36,14 +35,12 @@ window.ethereum.on("accountsChanged", () => {
 });
 
 $(document).on("turbo:load", async function () {
-  console.log("turbo-load-this");
   checkProvider();
 });
 
 // function to change the login and logout
 const login = () => {
   if (typeof accounts != "undefined" && accounts.length) {
-    console.log("account is : ", accounts[0]);
     $("#loginId").html(accounts[0]);
   }
 };

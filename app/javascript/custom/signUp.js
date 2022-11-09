@@ -1,9 +1,4 @@
-import {
-  accounts,
-  web3,
-  checkProvider,
-  newSigning,
-} from "./metamaskConnection";
+import { accounts, newSigning } from "./metamaskConnection";
 
 $(document).on("turbo:load", async () => {
   $("#registrationBtn").on("click", async (e) => {
