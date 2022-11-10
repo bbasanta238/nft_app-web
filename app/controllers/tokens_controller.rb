@@ -34,7 +34,8 @@ class TokensController < ApplicationController
 
     def latestMint
         @tokens = Token.all
-        FetchLatestMintJob.perform_now("#{gon.contractAddress}",@tokens.length)
+        # FetchLatestMintJob.perform_now("#{gon.contractAddress}",@tokens.length)
+        FetchLatestMintJob.perform_now("#{gon.collectiblesAddress}",@tokens.length)
         redirect_to root_path
     end
     

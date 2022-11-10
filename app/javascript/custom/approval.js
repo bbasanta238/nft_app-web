@@ -1,4 +1,5 @@
 import { accounts, web3 } from "./metamaskConnection";
+import { setApproval } from "../web3/approval";
 
 $(document).on("turbo:load", function () {
   $("#listingBtn").on("click", async (e) => {
@@ -8,10 +9,14 @@ $(document).on("turbo:load", function () {
 
     const signature = await approvedSignature(tokenID, price);
     if (signature) {
-      $("#sellForm").append(
-        `<input type="hidden" name="approvalSignature" value=${signature}>`
-      );
-      $("#sellForm").trigger("submit");
+      if (await setApproval(tokenID)) {
+        $("#sellForm").append(
+          `<input type="hidden" name="approvalSignature" value=${signature}>`
+        );
+        $("#sellForm").trigger("submit");
+      } else {
+        alert("Error in approval");
+      }
     }
   });
 

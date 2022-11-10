@@ -1,10 +1,16 @@
-import { NFTContract, contractConnection } from "../contractConnection";
+import {
+  contractConnection,
+  collectiblesContract,
+  exchangeContract,
+} from "../contractConnection";
 import { accounts } from "../custom/metamaskConnection";
 
 async function mintNFT(metaDataURI) {
   await contractConnection();
-  await NFTContract.methods.safeMint(metaDataURI).send({ from: accounts[0] });
-  const event = await NFTContract.getPastEvents("Transfer", {});
+  await collectiblesContract.methods
+    .safeMint(metaDataURI)
+    .send({ from: accounts[0] });
+  const event = await collectiblesContract.getPastEvents("Transfer", {});
   return event;
 }
 

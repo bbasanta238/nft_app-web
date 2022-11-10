@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_075237) do
     t.string "image_uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "current_owner"
     t.string "owner"
   end
 

@@ -6,7 +6,8 @@ import json
 # importing abi json file
 
 def latestTokens():
-    fileName = "app/javascript/abi/NFTContract.json"
+    # fileName = "app/javascript/abi/NFTContract.json"
+    fileName = "app/javascript/abi/collectibles.json"
     file = open(fileName,"r")
     abiJson= json.load(file)
 
