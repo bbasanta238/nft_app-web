@@ -11,12 +11,11 @@ async function buyToken(tokenID, tokenPrice) {
   const amount = web3.utils.toBN(tokenPrice * 10 ** 18);
   // alert(amount);
   await exchangeContract.methods
-    .buyToken(parseInt(tokenID))
+    .buyToken(gon.collectiblesAddress, parseInt(tokenID), accounts[0], amount)
     .send({ from: accounts[0], value: amount });
-  //   const event = await exchangeContract.getPastEvents("Transfer", {});
+  const event = await collectiblesContract.getPastEvents("Transfer", {});
   //   const event = await collectiblesContract.getPastEvents("Transfer", {});
-  //   return event;
-  //   console.log(event);
+  return event;
 }
 
 export { buyToken };

@@ -9,6 +9,11 @@ $(document).on("turbo:load", function () {
     // e.preventDefault();
     let tokenID = $("#tokenID").html();
     let price = $("#listedPrice").html();
-    buyToken(tokenID, parseFloat(price));
+    const event = await buyToken(tokenID, parseFloat(price));
+    if (event) {
+      window.location.href = "/buy/new?id=" + tokenID;
+    } else {
+      alert("Transaction Error");
+    }
   });
 });
