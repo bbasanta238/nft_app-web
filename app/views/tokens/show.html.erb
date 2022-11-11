@@ -1,4 +1,4 @@
-<div class="container d-flex mt-sm-5 justify-content-center py-0 flex-column flex-sm-row w-sm-75 mx-auto" >
+<div class="container d-flex mt-sm-5 justify-content-center py-0 flex-column flex-sm-row w-sm-75 mx-auto" id="item">
   <div class="card w-75 w-sm-25 text-center align-self-center">
     <img src="<%= @token.image_uri %>" class="card-img-top img-fluid" alt="..." >
     <div class="card-body border border-top">
@@ -34,8 +34,18 @@
     <div class="w-100 w-sm-75">
       <% if(@sell&& !@owner)%>
         <button id="buyBtn" class="btn btn-primary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold">Buy</button>
-        <%# <%= link_to 'Buy', token_sale_path(@token,@listed),method: :delete,data:{turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class: 'btn btn-primary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
       <%end%>
     </div>
   </div>
+</div>
+<%# loading %>
+<div class="d-flex  align-items-center justify-content-center d-none" id="spinner" style="height: 75vh" id="spinner">
+  <button class="btn btn-danger" type="button" disabled>
+    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+    <span class="visually-hidden">Loading...</span>
+  </button>
+  <button class="btn btn-danger ms-2" type="button" disabled>
+    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+    Please Wait, Processing !! 
+  </button>
 </div>
