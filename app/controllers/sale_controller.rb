@@ -16,9 +16,6 @@ class SaleController < ApplicationController
             list.update(list_price: params[:form][:list_price],approval_signature: params[:approvalSignature], is_listed: true)
             redirect_to token_path(params[:token_id])
         end
-
-        # @listed = ListToken.create(token_id: params[:token_id], list_price: params[:form][:list_price], is_listed: true)
-        # redirect_to root_path
     end
 
     def new

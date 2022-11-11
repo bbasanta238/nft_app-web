@@ -17,7 +17,6 @@ async function setApproval(tokenID) {
     await collectiblesContract.methods
       .setApprovalForAll(gon.exchangeAddress, true)
       .send({ from: accounts[0] });
-    // let event = await NFTContract.getPastEvents("Approval", {});
     let event = await collectiblesContract.getPastEvents("Approval", {});
     return event;
   }

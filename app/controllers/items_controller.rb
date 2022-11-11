@@ -8,8 +8,7 @@ class ItemsController < ApplicationController
     end
 
     def index
-        # puts current_user
-        @tokens = Token.where(owner: current_user.wallet_address)
+        @tokens= Token.includes(:list_token).where(tokens: {owner: current_user.wallet_address})
     end
 
 end
