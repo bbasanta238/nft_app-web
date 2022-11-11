@@ -1,8 +1,9 @@
-<div class="container d-flex mt-sm-5 justify-content-center py-5 flex-column flex-sm-row w-sm-75 mx-auto" >
+<div class="container d-flex mt-sm-5 justify-content-center py-0 flex-column flex-sm-row w-sm-75 mx-auto" >
   <div class="card w-75 w-sm-25 text-center align-self-center">
     <img src="<%= @token.image_uri %>" class="card-img-top img-fluid" alt="..." >
     <div class="card-body border border-top">
-      <h5 class="card-title">Token#<%=@token.token_id%></h5>
+      <h5 class="card-title">Token#</h5>
+      <h5 class="card-title" id="tokenID"><%=@token.token_id%></h5>
     </div>
   </div>
   <div class="border border-primary my-3 mx-sm-5 my-sm-0 d-none d-sm-block">
@@ -16,8 +17,8 @@
       </p>
       <% if(@sell)%>
         <h5 class="card-title">Listed Price : </h5>
-        <p class="lead">
-          <%=@listed.list_price%> ETH
+        <p class="lead" id="listedPrice">
+          <%=@listed.list_price%>
         </p>
       <%end%>
     </section>
@@ -32,7 +33,8 @@
     <%# for buyer %>
     <div class="w-100 w-sm-75">
       <% if(@sell&& !@owner)%>
-        <%= link_to 'Buy', token_sale_path(@token,@listed),method: :delete,data:{turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class: 'btn btn-primary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
+        <button id="buyBtn" class="btn btn-primary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold">Buy</button>
+        <%# <%= link_to 'Buy', token_sale_path(@token,@listed),method: :delete,data:{turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class: 'btn btn-primary mt-3 mt-sm-5 text-center w-100 w-sm-50 fs-5 fw-semibold' %>
       <%end%>
     </div>
   </div>

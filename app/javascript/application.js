@@ -11,4 +11,5 @@ import "./custom/metamaskConnection";
 import "./custom/mintForm";
 import "./custom/ipfsUploader";
 import "./custom/approval";
+import "./custom/buyNft";
 import "./custom/signUp";
