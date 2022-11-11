@@ -16,7 +16,7 @@
         <%=@token.description%>
       </p>
       <% if(@sell)%>
-        <h5 class="card-title">Listed Price : </h5>
+        <h5 class="card-title">Listed Price [ETH] :</h5>
         <p class="lead" id="listedPrice">
           <%=@listed.list_price%>
         </p>
@@ -39,13 +39,4 @@
   </div>
 </div>
 <%# loading %>
-<div class="d-flex  align-items-center justify-content-center d-none" id="spinner" style="height: 75vh" id="spinner">
-  <button class="btn btn-danger" type="button" disabled>
-    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-    <span class="visually-hidden">Loading...</span>
-  </button>
-  <button class="btn btn-danger ms-2" type="button" disabled>
-    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-    Please Wait, Processing !! 
-  </button>
-</div>
+<%= render 'shared/spinner'%>
