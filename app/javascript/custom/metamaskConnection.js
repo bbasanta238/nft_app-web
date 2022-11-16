@@ -31,6 +31,7 @@ const newSigning = async () => {
 
 window.ethereum.on("accountsChanged", () => {
   localStorage.removeItem("signature");
+  document.getElementById("logoutId").click();
 });
 
 $(document).on("turbo:load", async function () {

@@ -1,7 +1,7 @@
 import { Web3Storage } from "web3.storage";
 import { mintNFT } from "../web3/NFTMint";
-let client;
 
+let client;
 function getAccessToken() {
   return gon.web3StorageAPIKey;
 }
