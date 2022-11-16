@@ -2,8 +2,6 @@ from web3 import Web3
 import sys
 import json
 
-# importing abi json file
-
 def tokens():
     fileName = "app/javascript/abi/NFTContract.json"
     file = open(fileName,"r")
@@ -15,12 +13,11 @@ def tokens():
   
     # recieving contract address
     contractAddress = str(sys.argv[1])
-
+    
     # connecting to contract abi
     NFTContract =  w3.eth.contract(address=contractAddress,abi=abiJson)
     tokensInfo = NFTContract.functions.getAllTokens().call()
     print(json.dumps(tokensInfo))
-
 
 tokens()
 

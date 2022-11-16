@@ -2,11 +2,7 @@ from web3 import Web3
 import sys
 import json
 
-
-# importing abi json file
-
 def latestTokens():
-    # fileName = "app/javascript/abi/NFTContract.json"
     fileName = "app/javascript/abi/collectibles.json"
     file = open(fileName,"r")
     abiJson= json.load(file)
@@ -32,5 +28,4 @@ def latestTokens():
     print ((json.dumps(tokenList)))
 
 latestTokens()
-# FetchLatestMintJob.perform_now("0xFD54be2257D293dfAb54C7d09510fdFf9c09f15D",4)
 

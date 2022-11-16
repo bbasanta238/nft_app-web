@@ -7,7 +7,6 @@ class FetchAllTokensJob < ApplicationJob
     @tokens = `python3 lib/assets/python/fetchTokenScript.py "#{contractAddress}"`
     parsedTokens = JSON.parse(@tokens)
     @nfts = Array.new()
-    
     for i in (0...parsedTokens.length)do 
         individualNFTObject = fetchAPI(parsedTokens[i])
         @nfts.push(individualNFTObject)

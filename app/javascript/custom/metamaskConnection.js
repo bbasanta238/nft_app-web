@@ -9,7 +9,6 @@ const checkProvider = async () => {
       web3 = new Web3(await Web3.givenProvider);
       accounts = await ethereum.request({ method: "eth_requestAccounts" });
       login();
-      // message = `Your want to Login in this website via account ${accounts[0]}`;
     } else {
       alert("Please intall metamask");
     }

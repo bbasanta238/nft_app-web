@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :items, only: :index
 
-  resources :buy, only: :new
+  resources :buy
 
   resources :tokens do
     resources :sale, except: :index

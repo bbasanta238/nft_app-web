@@ -16,10 +16,11 @@
         <%=@token.description%>
       </p>
       <% if(@sell)%>
-        <h5 class="card-title">Listed Price [ETH] :</h5>
+        <h5 class="card-title">Listed Price : </h5>
         <p class="lead" id="listedPrice">
           <%=@listed.list_price%>
         </p>
+        <p class="d-none" id="signature"><%=@listed.approval_signature%></p>
       <%end%>
     </section>
     <%# for owner %>

@@ -37,5 +37,4 @@ class TokensController < ApplicationController
         FetchLatestMintJob.perform_now("#{gon.collectiblesAddress}",@tokens.length)
         redirect_to root_path
     end
-    
 end

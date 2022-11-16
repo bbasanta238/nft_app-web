@@ -24,15 +24,12 @@ async function uploadImage(file, inputValues) {
 async function uploadMetaData(nftJSON, inputValues) {
   const blob = new Blob([nftJSON], { type: "application/json" });
   const files = [new File([blob], `${inputValues.name}.json`)];
-  console.log("blob files", files);
   const metaDataCID = await client.put(files);
   let metaDataURI = `https://${metaDataCID}.ipfs.dweb.link/${inputValues.name}.json`;
   const transferEvent = await mintNFT(metaDataURI);
   if (transferEvent) {
     window.location.assign("/latest-mint");
   }
-  // console.log(transferEvent);
-  console.log("metadata URI", metaDataURI);
 }
 
 // function to make a json metaData for nft

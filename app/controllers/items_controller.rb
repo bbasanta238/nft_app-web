@@ -10,5 +10,4 @@ class ItemsController < ApplicationController
     def index
         @tokens= Token.includes(:list_token).where(tokens: {owner: current_user.wallet_address})
     end
-
 end

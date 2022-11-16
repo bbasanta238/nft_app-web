@@ -1,11 +1,10 @@
 import {
   collectiblesContract,
-  exchangeContract,
   contractConnection,
 } from "../contractConnection";
 import { accounts } from "../custom/metamaskConnection";
 
-async function setApproval(tokenID) {
+async function setApproval() {
   await contractConnection();
   if (
     await collectiblesContract.methods

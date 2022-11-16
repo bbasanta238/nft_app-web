@@ -1,7 +1,6 @@
 import {
   contractConnection,
   collectiblesContract,
-  exchangeContract,
 } from "../contractConnection";
 import { accounts } from "../custom/metamaskConnection";
 

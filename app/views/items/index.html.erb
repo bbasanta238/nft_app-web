@@ -1,9 +1,9 @@
 <div class="container w-sm-75">
-  <div class="row row-cols-1 row-cols-2 row-cols-md-4">
+  <div class="row row-cols-2 row-cols-md-5">
     <% @tokens.each do |token| %>
-      <div class="col my-3">
+      <div class="col my-3 w-sm-20">
         <div class="card h-100">
-          <img class="card-img-top" src="<%=token.image_uri%>" alt="Card image cap" style="height:100%">
+          <img class="card-img-top h-100" src="<%=token.image_uri%>" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><%=token.name%></h5>
           </div>
@@ -11,9 +11,9 @@
           </ul>
           <div class="card-body d-flex justify-content-between mx-2">
             <%if (token.list_token == nil or token.list_token.is_listed == false)%>
-              <%= link_to 'Sell', token_path(token) ,class: 'btn btn-danger stretched-link w-50'%>
+              <%= link_to 'Sell', token_path(token) ,class: 'btn btn-danger stretched-link w-100'%>
             <%else%>
-              <small class="text-muted fs-5"><%=token.list_token.list_price%> ETH</small>
+              <small class="text-muted fs-sm-5"><%=token.list_token.list_price%> ETH</small>
               <%=link_to 'Cancel', token_path(token) ,class: 'btn btn-secondary stretched-link'%>
             <%end%>
           </div>

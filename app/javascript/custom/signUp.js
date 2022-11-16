@@ -12,7 +12,6 @@ $(document).on("turbo:load", async () => {
       window.location.assign("/users/sign_up");
     }
   });
-
   $("#logoutId").on("click", () => {
     localStorage.removeItem("signature");
   });

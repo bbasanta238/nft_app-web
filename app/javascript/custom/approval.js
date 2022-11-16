@@ -11,7 +11,7 @@ $(document).on("turbo:load", function () {
     if (signature) {
       $("#sellWizard").addClass("d-none");
       $("#spinner").removeClass("d-none");
-      if (await setApproval(tokenID)) {
+      if (await setApproval()) {
         $("#sellForm").append(
           `<input type="hidden" name="approvalSignature" value=${signature}>`
         );
