@@ -5,7 +5,6 @@ class FetchLatestMintJob < ApplicationJob
 
   def perform(contractAddress,totalRow)
     @tokens = `python3 lib/assets/python/latestMint.py "#{contractAddress}" "#{totalRow}"`
-    puts @tokens
     parsedTokens = JSON.parse(@tokens)
     @nfts = Array.new()
     for i in (0...parsedTokens.length)do 
@@ -17,7 +16,6 @@ class FetchLatestMintJob < ApplicationJob
 
   def fetchAPI(individualNFTArray)
     tokenURI  = individualNFTArray[1]
-    puts tokenURI
     singleNFT = Hash[]
     tokenIPFSData = JSON.parse(RestClient::Request.execute(method: :get, url: tokenURI, timeout: 20))
     singleNFT[:tokenID] = individualNFTArray[0]
@@ -31,7 +29,7 @@ class FetchLatestMintJob < ApplicationJob
 
   def updateModel()
     for i in 0...@nfts.length do
-      token = Token.where(token_ID: @nfts[i][:tokenID]).where(token_URI: @nfts[i][:tokenURI])
+      token = Token.where(token_id: @nfts[i][:tokenID]).where(token_uri: @nfts[i][:tokenURI])
       if(token.empty?)
         Token.create(token_id: @nfts[i][:tokenID], token_uri: @nfts[i][:tokenURI], name: @nfts[i][:name], description: @nfts[i][:description], image_uri: @nfts[i][:imageURI], owner: @nfts[i][:owner])
       end

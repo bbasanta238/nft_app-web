@@ -3,7 +3,7 @@ import sys
 import json
 
 def tokens():
-    fileName = "app/javascript/abi/NFTContract.json"
+    fileName = "app/javascript/abi/collectibles.json"
     file = open(fileName,"r")
     abiJson= json.load(file)
 

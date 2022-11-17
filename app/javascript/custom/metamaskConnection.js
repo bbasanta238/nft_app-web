@@ -2,7 +2,6 @@ import Web3 from "web3";
 
 let web3;
 let accounts;
-
 const checkProvider = async () => {
   if (localStorage.getItem("signature") == "true") {
     if (typeof window.ethereum !== "undefined") {
