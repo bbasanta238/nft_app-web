@@ -16,7 +16,7 @@ def latestTokens():
 
     # connecting to contract abi
     NFTContract =  w3.eth.contract(address=contractAddress,abi=abiJson)
-    tokensSupply = NFTContract.functions.totalSupply().call()
+    tokensSupply = NFTContract.functions._tokenIdCounter().call()
     latestTokenCount = tokensSupply-int(totalRow)
     tokenList = []
     if latestTokenCount>0 :
