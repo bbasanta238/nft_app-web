@@ -24,15 +24,10 @@ $(document).on("turbo:load", function () {
 
   // signing the approval
   const approvedSignature = async (tokenID, price) => {
-    let message = {
-      token_id: tokenID,
-      sell_price: price,
-      approval: `I owner of this token ${accounts[0]} give approval to sell this token in the above price`,
-    };
-    let signature = await web3.eth.personal.sign(
-      JSON.stringify(message),
-      accounts[0]
-    );
+    let message =
+      "I owner of this token give approval to sell this token in the above price";
+    let hashedMessage = await web3.utils.soliditySha3(message);
+    let signature = await web3.eth.personal.sign(hashedMessage, accounts[0]);
     return signature;
   };
 });

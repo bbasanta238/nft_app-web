@@ -6,7 +6,7 @@
     <div class="container d-flex mt-sm-4 justify-content-center py-5 flex-column flex-sm-row w-sm-75 mx-auto" >
       <div class="w-100 w-sm-75">
         <%= simple_form_for :form,url: token_sale_index_path(@token.token_id),id: 'sellForm' do |f| %>
-          <%= f.input :list_price, :label => 'Price', placeholder: '0.0 ETH' %>
+          <%= f.input :list_price, :as => :float,:label => 'Price', placeholder: '0.0 ETH' %>
           <%=f.submit 'List This Item' , class: 'btn btn-danger mt-3 mt-sm-4 text-center w-100 w-sm-50 fs-5 fw-semibold',id: 'listingBtn' %>
         <% end %>
       </div>

@@ -7,7 +7,15 @@ $(document).on("turbo:load", function () {
     let signature = $("#signature").html();
     $("#item").addClass("d-none");
     $("#spinner").removeClass("d-none");
-    const event = await buyToken(tokenID, parseFloat(price));
+
+    let message =
+      "I owner of this token give approval to sell this token in the above price";
+    const event = await buyToken(
+      signature,
+      message,
+      tokenID,
+      parseFloat(price)
+    );
     if (event) {
       window.location.href = "/buy/new?id=" + tokenID;
     } else {
